@@ -50,7 +50,7 @@ export default function Uploader({ file, onFileChanged }: IProps) {
           type="file"
           name="file"
           accept="image/*"
-          capture="environment"
+          // capture="environment"
           onChange={onFileChange}
           className="hidden"
           ref={fileInputRef}
