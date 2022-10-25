@@ -1,5 +1,6 @@
 import { Session } from "@supabase/supabase-js";
 import { useState, useEffect } from "react";
+import { getProfile } from "./api";
 import { supabase } from "./supabaseClient";
 
 const Account = ({ session }: { session: Session | null }) => {
@@ -7,32 +8,18 @@ const Account = ({ session }: { session: Session | null }) => {
   const [name, setName] = useState<string | null>(null);
 
   useEffect(() => {
-    getProfile();
-  }, [session]);
-
-  const getProfile = async () => {
-    try {
+    async function load() {
       setLoading(true);
-
-      let { data, error, status } = await supabase
-        .from("profiles")
-        .select("*")
-        .eq("id", session?.user?.id)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
+      const data = await getProfile(session!);
       if (data) {
         setName(data.name);
       }
-    } catch (error) {
-      // alert(error.message);
-    } finally {
       setLoading(false);
     }
-  };
+    if (session) {
+      load();
+    }
+  }, [session]);
 
   const updateProfile = async (e: any) => {
     e.preventDefault();
@@ -60,12 +47,17 @@ const Account = ({ session }: { session: Session | null }) => {
   return (
     <div aria-live="polite">
       {loading ? (
-        "Saving ..."
+        "Loading ..."
       ) : (
         <form onSubmit={updateProfile} className="form-widget">
+          {!name?.length && (
+            <h2 className="text-xl my-4">Complete your profile</h2>
+          )}
           <div>Email: {session?.user?.email}</div>
           <div>
-            <label htmlFor="username">Name</label>
+            <label htmlFor="username" className="block">
+              Name
+            </label>
             <input
               id="username"
               type="text"
@@ -84,7 +76,7 @@ const Account = ({ session }: { session: Session | null }) => {
       )}
       <button
         type="button"
-        className="block border rounded p-2"
+        className="block border rounded p-2 my-4"
         onClick={() => supabase.auth.signOut()}
       >
         Sign Out

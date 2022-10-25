@@ -36,7 +36,7 @@ function App() {
           <BrowserRouter>
             <Layout>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home session={session} />} />
                 <Route
                   path="/account"
                   element={<Account session={session} />}

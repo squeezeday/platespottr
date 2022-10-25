@@ -1,9 +1,29 @@
+import { Session } from "@supabase/supabase-js";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { getProfile } from "./api";
 import { useAppContext } from "./context/AppContext";
 import Entry from "./Entry";
 import Plate from "./Plate";
 
-export default function Home() {
+export default function Home({ session }: { session: Session | null }) {
   const { state } = useAppContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const data = await getProfile(session!);
+        if (!data) throw new Error("No profile");
+      } catch (error) {
+        navigate("/account");
+      }
+    }
+    if (session) {
+      load();
+    }
+  }, [session]);
+
   return (
     <>
       <h2 className="my-8">Latest entries</h2>
