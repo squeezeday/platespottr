@@ -63,12 +63,15 @@ const Account = ({ session }: { session: Session | null }) => {
               type="text"
               value={name || ""}
               onChange={(e) => setName(e.target.value)}
-              className="border p-2"
+              className="border p-2 bg-gray-700 my-2"
             />
           </div>
 
           <div>
-            <button className="block border rounded p-2" disabled={loading}>
+            <button
+              className="block border rounded p-2 bg-gray-700"
+              disabled={loading}
+            >
               Update profile
             </button>
           </div>
@@ -76,7 +79,7 @@ const Account = ({ session }: { session: Session | null }) => {
       )}
       <button
         type="button"
-        className="block border rounded p-2 my-4"
+        className="block border rounded p-2 my-8"
         onClick={() => supabase.auth.signOut()}
       >
         Sign Out

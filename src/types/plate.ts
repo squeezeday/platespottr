@@ -9,4 +9,5 @@ export default interface IPlate {
   cloudinary_id?: string;
   latitude?: number;
   longitude?: number;
+  created_at?: string;
 }

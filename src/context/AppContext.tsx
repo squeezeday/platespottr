@@ -61,7 +61,9 @@ export function AppWrapper({ children }: any) {
   const loadPlates = async () => {
     const { data, error } = await supabase
       .from("plates")
-      .select("id, number, user_id, cloudinary_id, profiles (id, name)")
+      .select(
+        "id, number, user_id, cloudinary_id, created_at, profiles (id, name)"
+      )
       .order("created_at");
     dispatch({ type: "plates.set", payload: data });
   };

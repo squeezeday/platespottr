@@ -88,10 +88,11 @@ export default function Submit({ session }: IProps) {
         file={file}
       />
       <form onSubmit={handleSubmit(doSubmit)}>
+        <label htmlFor="id">Plate number (NNN)</label>
         <input
           type="text"
-          className="w-full max-w-sm border-2 border-slate-400 rounded p-1 px-2 mr-2 focus:outline-none active:outline-none"
-          placeholder="Plate number"
+          className="block w-20 max-w-sm border-2 text-black text-2xl border-slate-400 rounded p-1 px-2 mr-2 focus:outline-none active:outline-none"
+          placeholder="123"
           id="id"
           autoComplete="off"
           maxLength={3}

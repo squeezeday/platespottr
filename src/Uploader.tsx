@@ -41,7 +41,7 @@ export default function Uploader({ file, onFileChanged }: IProps) {
   return (
     <>
       <div
-        className="my-4 border-dashed border border-udni-teal rounded bg-white text-slate-300 flex flex-col justify-center items-center select-none"
+        className="my-4 border-dashed border-2 border-udni-teal rounded  text-slate-300 flex flex-col justify-center items-center select-none"
         onClick={onClick}
         onDrop={onDrop}
         onDragOver={(e) => console.log(e)}

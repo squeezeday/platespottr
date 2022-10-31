@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import dayjs from "dayjs";
 import Plate from "./Plate";
-import { supabase } from "./supabaseClient";
 import IPlate from "./types/plate";
 
 interface IProps {
@@ -18,6 +17,9 @@ export default function Entry({ plate }: IProps) {
         />
         <Plate number={plate.number} />
         <p className="text-xs m-1">{plate.profiles?.name}</p>
+        <p className="text-xs m-1">
+          {dayjs(plate.created_at).format("YYYY-MM-DD hh:mm:ss")}
+        </p>
       </div>
     </>
   );

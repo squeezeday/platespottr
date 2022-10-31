@@ -13,12 +13,17 @@ interface ILeaderboardRow {
 }
 
 export default function Leaderboard() {
-  const [users, setUsers] = useState<ILeaderboardRow[]>([]);
+  const [leaderboard, setLeaderboard] = useState<ILeaderboardRow[]>([]);
   const loadPlates = async () => {
     const { data, error } = await supabase
       .from("profiles")
       .select("id, name, num_plates:plates(count)");
-    if (data) setUsers(data as ILeaderboardRow[]);
+    if (data)
+      setLeaderboard(
+        (data as ILeaderboardRow[]).sort(
+          (a, b) => b.num_plates[0].count - a.num_plates[0].count
+        )
+      );
   };
   useEffect(() => {
     loadPlates();
@@ -35,7 +40,7 @@ export default function Leaderboard() {
             </tr>
           </thead>
           <tbody>
-            {users?.map((user) => (
+            {leaderboard?.map((user) => (
               <tr key={`leaderboard-${user.id}`}>
                 <td>{user.name}</td>
                 <td>{user.num_plates[0].count}</td>

@@ -7,11 +7,8 @@ interface IProps {
 }
 export default function Plate({ number }: IProps) {
   return (
-    <div className="rounded border-2 border-slate-800 flex flex-row w-32 m-4">
-      <div className="bg-blue-700 w-4  text-white text-xs flex items-center justify-center">
-        <p>S</p>
-      </div>
-      <h2 className="text-xl font-bold p-1 px-2">XXX {number}</h2>
+    <div className=" bg-white text-black border-2 border-slate-800 flex flex-row w-full rounded items-center justify-center">
+      <h2 className="text-xl font-bold p-1 px-2 text-center">XXX {number}</h2>
     </div>
   );
 }
