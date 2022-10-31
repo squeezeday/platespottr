@@ -23,7 +23,7 @@ export default function Auth() {
   return (
     <div className="container">
       <div className="" aria-live="polite">
-        <h1 className="header">Login</h1>
+        <h2 className="my-8 text-5xl">Platespotter challenge 2000</h2>
         <p className="description">
           Sign in via magic link with your email below
         </p>
@@ -34,14 +34,14 @@ export default function Auth() {
             <label htmlFor="email">Email</label>
             <input
               id="email"
-              className="ml-4 border p-2"
+              className="ml-4 border p-2 bg-gray-700"
               type="email"
               placeholder="Your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <button
-              className="border rounded bg-slate-100 p-2"
+              className="border rounded border-slate-100 p-2"
               aria-live="polite"
             >
               Send magic link
