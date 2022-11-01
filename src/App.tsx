@@ -11,6 +11,7 @@ import Account from "./Account";
 import Submit from "./Submit";
 import { AppWrapper } from "./context/AppContext";
 import Gallery from "./Gallery";
+import UserGallery from "./UserGallery";
 
 function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/gallery/" element={<Gallery />} />
                 <Route path="/gallery/:query" element={<Gallery />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/usergallery/:userId" element={<UserGallery />} />
                 <Route path="/submit" element={<Submit session={session} />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

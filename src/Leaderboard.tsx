@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Plate from "./Plate";
 import { supabase } from "./supabaseClient";
 import IPlate from "./types/plate";
@@ -42,7 +43,9 @@ export default function Leaderboard() {
           <tbody>
             {leaderboard?.map((user) => (
               <tr key={`leaderboard-${user.id}`}>
-                <td>{user.name}</td>
+                <td>
+                  <Link to={`/usergallery/${user.id}`}>{user.name}</Link>
+                </td>
                 <td>{user.num_plates[0].count}</td>
               </tr>
             ))}

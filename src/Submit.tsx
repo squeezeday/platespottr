@@ -81,6 +81,7 @@ export default function Submit({ session }: IProps) {
     <>
       <Uploader
         onFileChanged={async (f, lat, lon) => {
+          console.log({ lat, lon });
           setFile(f);
           setLatitude(lat);
           setLongitude(lon);
