@@ -1,4 +1,5 @@
 import { Session } from "@supabase/supabase-js";
+import dayjs from "dayjs";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getProfile } from "./api";
@@ -37,7 +38,16 @@ export default function Home({ session }: { session: Session | null }) {
               ?.sort((a, b) => a.number.localeCompare(b.number))
               .map((plate) => (
                 <div key={plate.id} className="w-32">
-                  <Plate number={plate.number} />
+                  <a
+                    href={`https://res.cloudinary.com/${
+                      import.meta.env.VITE_CLOUD_NAME
+                    }/image/upload/w_640,h_640,c_fit/${
+                      plate.cloudinary_id
+                    }.jpg`}
+                    target="_blank"
+                  >
+                    <Plate number={plate.number} />
+                  </a>
                 </div>
               ))}
           </div>
