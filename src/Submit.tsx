@@ -108,23 +108,25 @@ export default function Submit({ session }: IProps) {
           {isDuplicate ? "Already claimed!" : null} {errors?.number?.message}
         </p>
 
-        <button
-          type="submit"
-          disabled={isSubmitting || isDuplicate === true}
-          className="border rounded p-2 my-4 flex items-center"
-        >
-          Submit
-          {isSubmitting ? (
-            <Loading className="ml-2 w-5 h-5 inline" />
-          ) : (
-            <ChevronRightIcon className="ml-2 w-5 h-5 inline" />
-          )}
-          {isSuccess ? (
-            <CheckCircleIcon className="ml-2 w-5 h-5 inline text-green-500" />
-          ) : (
-            <></>
-          )}
-        </button>
+        <div className="fixed bottom-0 left-0 right-0 p-4">
+          <button
+            type="submit"
+            disabled={isSubmitting || isDuplicate === true}
+            className="w-full block rounded border-2  bg-gray-700 text-white text-2xl p-4 mx-auto text-center max-w-sm"
+          >
+            Submit
+            {isSubmitting ? (
+              <Loading className="ml-2 w-5 h-5 inline" />
+            ) : (
+              <ChevronRightIcon className="ml-2 w-5 h-5 inline" />
+            )}
+            {isSuccess ? (
+              <CheckCircleIcon className="ml-2 w-5 h-5 inline text-green-500" />
+            ) : (
+              <></>
+            )}
+          </button>
+        </div>
       </form>
       {plate && (
         <div className="w-52">

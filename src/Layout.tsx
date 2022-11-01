@@ -21,14 +21,6 @@ export default function Layout({ children }: IProps) {
         </div>
       </header>
       <div className="container mt-16 p-4">{children}</div>
-      <div className="fixed bottom-0 left-0 right-0 p-4">
-        <Link
-          className="rounded border-2  bg-gray-700 text-white text-2xl p-4 mx-auto block text-center"
-          to="/submit"
-        >
-          Submit Plate
-        </Link>
-      </div>
     </>
   );
 }

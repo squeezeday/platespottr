@@ -1,6 +1,6 @@
 import { Session } from "@supabase/supabase-js";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getProfile } from "./api";
 import { useAppContext } from "./context/AppContext";
 import Entry from "./Entry";
@@ -26,7 +26,7 @@ export default function Home({ session }: { session: Session | null }) {
 
   return (
     <>
-      <h2 className="my-8 text-5xl">Platespotter challenge 2000</h2>
+      <h2 className="my-8 text-5xl">Platespotter challenge 2022</h2>
 
       {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((initial) => {
         return (
@@ -43,6 +43,14 @@ export default function Home({ session }: { session: Session | null }) {
           </div>
         );
       })}
+      <div className="fixed bottom-0 left-0 right-0 p-4">
+        <Link
+          className="rounded border-2  bg-gray-700 text-white text-2xl p-4 mx-auto block text-center max-w-sm"
+          to="/submit"
+        >
+          Submit New Plate
+        </Link>
+      </div>
     </>
   );
 }

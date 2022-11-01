@@ -23,7 +23,7 @@ export default function Auth() {
   return (
     <div className="container">
       <div className="" aria-live="polite">
-        <h2 className="my-8 text-5xl">Platespotter challenge 2000</h2>
+        <h2 className="my-8 text-5xl">Platespotter challenge 2022</h2>
         <p className="description">
           Sign in via magic link with your email below
         </p>

@@ -41,7 +41,8 @@ function App() {
                   path="/account"
                   element={<Account session={session} />}
                 />
-                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/gallery/" element={<Gallery />} />
+                <Route path="/gallery/:query" element={<Gallery />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/submit" element={<Submit session={session} />} />
                 <Route path="*" element={<NotFound />} />
